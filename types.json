@@ -2,14 +2,38 @@
     "types": [
         {
             "id": 0,
-            "category": 0,
+            "category_id": 0,
             "name": "personal",
             "description": "Fireworks intended for recreational use during holiday celebrations"
         },
         {
             "id": 1,
-            "category": 1,
+            "category_id": 0,
+            "name": "aerial",
+            "description": "Fireworks intended for recreational use during holiday celebrations"
+        },
+        {
+            "id": 2,
+            "category_id": 0,
+            "name": "widerange",
+            "description": "Fireworks intended for recreational use during holiday celebrations"
+        },
+        {
+            "id": 4,
+            "category_id": 1,
             "name": "commercial",
+            "description": "Dynamite intended for authorized personel"
+        },
+        {
+            "id": 5,
+            "category_id": 1,
+            "name": "industrial",
+            "description": "Dynamite intended for authorized personel"
+        },
+        {
+            "id": 6,
+            "category_id": 1,
+            "name": "goverment",
             "description": "Dynamite intended for authorized personel"
         }
     ]
