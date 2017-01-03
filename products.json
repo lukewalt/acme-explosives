@@ -5,6 +5,12 @@
             "type": 0,
             "name": "Fairy Sparklers",
             "description": "Multi-colored sparklers that are safe for any age."
+        },
+        "tnt": {
+            "id": 1,
+            "type": 1,
+            "name": "TNT",
+            "description": "Explosive devise for inductrial use"
         }
     }]
 }

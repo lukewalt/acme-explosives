@@ -75,8 +75,40 @@ promise1.then(
             products = val;
             console.log("promise3 resolved : ", products);
         })
+    .then(chooseLoad)
 
-//
 // Once all data is loaded, you need to display the products in a Bootstrap grid.
 // Each product must display the string name of its product type, and product category.
 // Not the integer id value.
+
+function chooseLoad(){
+
+    $('#fireworks').click(function(){
+        $('.displayDemo').hide();
+        console.log("hey", categories[0].name);
+        var displayFire;
+        displayFire = `<div class="displayFire col-md-4">
+                            <h3>${products[0].fairy_sparklers.name}</h3>
+                            <p>${types[0].name}</p>
+                            <p>${categories[0].name}</p>
+                            <p>${products[0].fairy_sparklers.description}</p>
+
+                        </div>`
+        $('.container').append(displayFire);
+    })
+
+
+    $('#demolition').click(function(){
+        $('.displayFire').hide();
+        console.log("hey", categories[1].name);
+        var displayDemo;
+        displayDemo = `<div class="displayDemo col-md-4">
+                            <h3>${products[0].tnt.name}</h3>
+                            <p>${types[1].name}</p>
+                            <p>${categories[1].name}</p>
+                            <p>${products[0].tnt.description}</p>
+
+                        </div>`
+        $('.container').append(displayDemo);
+    })
+}
