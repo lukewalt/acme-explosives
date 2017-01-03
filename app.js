@@ -1,5 +1,9 @@
 console.log("hey");
 
+var categories;
+var types;
+var products;
+
 // Create a simple user interface for your product catalog
 //where a user can select a category from a dropdown.
 
@@ -7,10 +11,71 @@ $('#dropdown').click(function(){
     $('#myDropdown').toggle('show');
 });
 
-// When a category is selected, you must use Promises to read, first, from the categories.json to load that array of objects,
-//
-// then load types.json,
-// then products.json.
+// When a category is selected, you must use Promises to read, first,
+//from the categories.json to load that array of objects,
+
+//--------------------------   PROMISE ONE  ----------
+var promise1 = new Promise(function(resolve, reject){
+    var request1 = new XMLHttpRequest();
+    request1.addEventListener("load", function(){
+        var list = JSON.parse(request1.responseText).categories;
+        resolve(list);
+    })
+    request1.open("GET", "categories.json");
+    request1.send();
+})
+
+console.log("promise1", promise1);
+
+
+//--------------------------  PROMISE TWO ------------
+var promise2 = new Promise(function(resolve, reject){
+    var request2 = new XMLHttpRequest();
+    request2.addEventListener("load", function(){
+        var list = JSON.parse(request2.responseText).types;
+        resolve(list);
+    })
+    request2.open("GET", "types.json");
+    request2.send();
+})
+
+console.log("PROMISE2", promise2);
+
+
+//--------------------------  PROMISE THREE ------------
+var promise3 = new Promise(function(resolve, reject){
+    var request3 = new XMLHttpRequest();
+    request3.addEventListener("load", function(){
+        var list = JSON.parse(request3.responseText).products;
+        resolve(list);
+    })
+    request3.open("GET", "products.json");
+    request3.send();
+})
+
+console.log("PROMISE3", promise3);
+
+
+//--------------------------  THENS ------------
+
+promise1.then(
+        function(val){
+            categories = val
+            console.log("promise1 resolved : ", categories)
+            return promise2
+    })
+    .then(  // then load types.json,
+        function(val) {
+            types = val;
+            console.log("promise2 resolved : ", types);
+            return promise3
+        })
+    .then(  // then products.json.
+        function(val){
+            products = val;
+            console.log("promise3 resolved : ", products);
+        })
+
 //
 // Once all data is loaded, you need to display the products in a Bootstrap grid.
 // Each product must display the string name of its product type, and product category.
