@@ -19,19 +19,19 @@
             "description": "Fireworks intended for recreational use during holiday celebrations"
         },
         {
-            "id": 4,
+            "id": 3,
             "category_id": 1,
             "name": "commercial",
             "description": "Dynamite intended for authorized personel"
         },
         {
-            "id": 5,
+            "id": 4,
             "category_id": 1,
             "name": "industrial",
             "description": "Dynamite intended for authorized personel"
         },
         {
-            "id": 6,
+            "id": 5,
             "category_id": 1,
             "name": "goverment",
             "description": "Dynamite intended for authorized personel"

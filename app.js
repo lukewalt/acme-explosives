@@ -1,8 +1,10 @@
-console.log("hey");
+console.log("promise");
 
 var categories;
 var types;
 var products;
+var displayDemo = "";
+var displayFire = "";
 
 // Create a simple user interface for your product catalog
 //where a user can select a category from a dropdown.
@@ -10,6 +12,7 @@ var products;
 $('#dropdown').click(function(){
     $('#myDropdown').toggle('show');
 });
+
 
 // When a category is selected, you must use Promises to read, first,
 //from the categories.json to load that array of objects,
@@ -57,58 +60,94 @@ console.log("PROMISE3", promise3);
 
 
 //--------------------------  THENS ------------
+//
+// promise1.then(
+//         function(val){
+//             categories = val
+//             console.log("promise1 resolved : ", categories)
+//             return promise2
+//     })
+//     .then(  // then load types.json,
+//         function(val) {
+//             types = val;
+//             console.log("promise2 resolved : ", types);
+//             return promise3
+//         })
+//     .then(  // then products.json.
+//         function(val){
+//             products = val;
+//             console.log("promise3 resolved : ", products);
+//         })
+//     .then(chooseLoad)
 
-promise1.then(
-        function(val){
-            categories = val
-            console.log("promise1 resolved : ", categories)
-            return promise2
+Promise.all([promise1, promise2, promise3])
+    .then(function(values){
+        categories = values[0];
+        console.log("promise1 resolved : ", categories)
+
+        types = values[1];
+        console.log("promise2 resolved : ", types);
+
+        products = values[2];
+        console.log("promise3 resolved : ", products);
+
+        chooseLoad();
     })
-    .then(  // then load types.json,
-        function(val) {
-            types = val;
-            console.log("promise2 resolved : ", types);
-            return promise3
-        })
-    .then(  // then products.json.
-        function(val){
-            products = val;
-            console.log("promise3 resolved : ", products);
-        })
-    .then(chooseLoad)
+
+
 
 // Once all data is loaded, you need to display the products in a Bootstrap grid.
 // Each product must display the string name of its product type, and product category.
 // Not the integer id value.
 
+var productName = [];
+function displayProductName(){
+    for (var i = 0; i < products.length; i++) {
+        var j = Object.keys(products[i])[0];
+        productName.unshift(products[i][j]);
+    }
+}
+
 function chooseLoad(){
 
     $('#fireworks').click(function(){
-        $('.displayDemo').hide();
-        console.log("hey", categories[0].name);
-        var displayFire;
-        displayFire = `<div class="displayFire col-md-4">
-                            <h3>${products[0].fairy_sparklers.name}</h3>
-                            <p>${types[0].name}</p>
-                            <p>${categories[0].name}</p>
-                            <p>${products[0].fairy_sparklers.description}</p>
+        $('.container').empty();
+        displayFire = ""
+        displayProductName();
 
-                        </div>`
+        console.log(productName);
+        for (var i = 0; i < productName.length; i++) {
+            if (productName[i].type_id <= 2) {
+                displayFire += `<div class="displayFire col-sm-4">
+                                    <p>${productName[i].name}</p>
+                                </div>`
+            }
+        }
+
         $('.container').append(displayFire);
+
     })
 
 
     $('#demolition').click(function(){
-        $('.displayFire').hide();
-        console.log("hey", categories[1].name);
-        var displayDemo;
-        displayDemo = `<div class="displayDemo col-md-4">
-                            <h3>${products[0].tnt.name}</h3>
-                            <p>${types[1].name}</p>
-                            <p>${categories[1].name}</p>
-                            <p>${products[0].tnt.description}</p>
+        displayDemo = ""
+        $('.container').empty();
+        displayProductName();
 
-                        </div>`
+        console.log(productName);
+        for (var i = 0; i < productName.length; i++) {
+            if (productName[i].type_id >= 3) {
+                displayDemo += `<div class="displayFire col-sm-4">
+                                    <p>${productName[i].name}</p>
+                                </div>`
+            }
+        }
+
         $('.container').append(displayDemo);
-    })
+
+        })
+}
+
+function populateFireworks() {
+
 }

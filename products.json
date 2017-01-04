@@ -27,7 +27,7 @@
         {
             "lady_fingers": {
                 "id": 3,
-                "type_id": 0,
+                "type_id": 1,
                 "name": "Lady Fingers",
                 "description": "Multi-colored sparklers that are safe for any age."
             }
@@ -35,7 +35,7 @@
         {
             "fountains": {
                 "id": 4,
-                "type_id": 0,
+                "type_id": 1,
                 "name": "Fountains",
                 "description": "Multi-colored sparklers that are safe for any age."
             }
@@ -43,7 +43,7 @@
         {
             "ground_spinners": {
                 "id": 5,
-                "type_id": 0,
+                "type_id": 1,
                 "name": "Ground Spinners",
                 "description": "Multi-colored sparklers that are safe for any age."
             }
@@ -51,7 +51,7 @@
         {
             "roman_candles": {
                 "id": 6,
-                "type_id": 0,
+                "type_id": 2,
                 "name": "Roman Candles",
                 "description": "Multi-colored sparklers that are safe for any age."
             }
@@ -59,7 +59,7 @@
         {
             "snaps": {
                 "id": 7,
-                "type_id": 0,
+                "type_id": 2,
                 "name": "Snaps",
                 "description": "Multi-colored sparklers that are safe for any age."
             }
@@ -67,7 +67,7 @@
         {
             "girandola": {
                 "id": 8,
-                "type_id": 0,
+                "type_id": 2,
                 "name": "Girandola",
                 "description": "Multi-colored sparklers that are safe for any age."
             }
@@ -75,7 +75,7 @@
         {
             "dynamite": {
                 "id": 9,
-                "type_id": 0,
+                "type_id": 3,
                 "name": "Dynamite",
                 "description": "Multi-colored sparklers that are safe for any age."
             }
@@ -83,7 +83,7 @@
         {
             "nitro_glyserine": {
                 "id": 10,
-                "type_id": 0,
+                "type_id": 3,
                 "name": "Nitro Glyserine",
                 "description": "Multi-colored sparklers that are safe for any age."
             }
@@ -91,7 +91,7 @@
         {
             "bomb": {
                 "id": 11,
-                "type_id": 0,
+                "type_id": 3,
                 "name": "Bomb",
                 "description": "Multi-colored sparklers that are safe for any age."
             }
@@ -99,7 +99,7 @@
         {
             "shovel": {
                 "id": 12,
-                "type_id": 0,
+                "type_id": 4,
                 "name": "Shovel",
                 "description": "Multi-colored sparklers that are safe for any age."
             }
@@ -107,7 +107,7 @@
         {
             "amatex": {
                 "id": 13,
-                "type_id": 0,
+                "type_id": 4,
                 "name": "Amatex",
                 "description": "Multi-colored sparklers that are safe for any age."
             }
@@ -115,7 +115,7 @@
         {
             "barotol": {
                 "id": 14,
-                "type_id": 0,
+                "type_id": 4,
                 "name": "Barotol",
                 "description": "Multi-colored sparklers that are safe for any age."
             }
@@ -123,7 +123,7 @@
         {
             "cyclotol": {
                 "id": 15,
-                "type_id": 0,
+                "type_id": 5,
                 "name": "cyclotol",
                 "description": "Multi-colored sparklers that are safe for any age."
             }
@@ -131,7 +131,7 @@
         {
             "dipicrylamine": {
                 "id": 16,
-                "type_id": 0,
+                "type_id": 5,
                 "name": "Dipicrylamine",
                 "description": "Multi-colored sparklers that are safe for any age."
             }
@@ -139,7 +139,7 @@
         {
             "tnt": {
                 "id": 17,
-                "type_id": 1,
+                "type_id": 5,
                 "name": "TNT",
                 "description": "Explosive devise for inductrial use"
             }
