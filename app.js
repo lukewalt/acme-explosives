@@ -1,8 +1,9 @@
-console.log("promise");
+// console.log("promise");
 
 var categories;
 var types;
 var products;
+var pics;
 var displayDemo = "";
 var displayFire = "";
 
@@ -28,7 +29,7 @@ var promise1 = new Promise(function(resolve, reject){
     request1.send();
 })
 
-console.log("promise1", promise1);
+// console.log("PROMISE1", promise1);
 
 
 //--------------------------  PROMISE TWO ------------
@@ -42,7 +43,7 @@ var promise2 = new Promise(function(resolve, reject){
     request2.send();
 })
 
-console.log("PROMISE2", promise2);
+// console.log("PROMISE2", promise2);
 
 
 //--------------------------  PROMISE THREE ------------
@@ -56,7 +57,24 @@ var promise3 = new Promise(function(resolve, reject){
     request3.send();
 })
 
-console.log("PROMISE3", promise3);
+// console.log("PROMISE3", promise3);
+
+
+
+//--------------------------  PROMISE FOUR ------------
+
+var promise4AJAX = function(){
+    return new Promise(function(resolve, reject) {
+        $.ajax({
+            url: "https://randomuser.me/api/"
+        }).done(function(data){
+            resolve(data);
+        })
+    });
+}
+
+
+// console.log("PROMISEAJAX", promise4AJAX());
 
 
 //--------------------------  THENS ------------
@@ -80,7 +98,7 @@ console.log("PROMISE3", promise3);
 //         })
 //     .then(chooseLoad)
 
-Promise.all([promise1, promise2, promise3])
+Promise.all([promise1, promise2, promise3, promise4AJAX()])
     .then(function(values){
         categories = values[0];
         console.log("promise1 resolved : ", categories)
@@ -91,7 +109,12 @@ Promise.all([promise1, promise2, promise3])
         products = values[2];
         console.log("promise3 resolved : ", products);
 
+        pics = values[3];
+        console.log("promise4 AJAX resolved : ", pics);
+
+
         chooseLoad();
+        displayProductName();
     })
 
 
@@ -100,26 +123,27 @@ Promise.all([promise1, promise2, promise3])
 // Each product must display the string name of its product type, and product category.
 // Not the integer id value.
 
-var productName = [];
 function displayProductName(){
     for (var i = 0; i < products.length; i++) {
-        var j = Object.keys(products[i])[0];
-        productName.unshift(products[i][j]);
+        var keys = Object.keys(products[i])[0];
+        productName.unshift(products[i][keys]);
     }
+    console.log(productName);
 }
+var productName = [];
 
 function chooseLoad(){
 
     $('#fireworks').click(function(){
         $('.container').empty();
         displayFire = ""
-        displayProductName();
 
-        console.log(productName);
+        // console.log(productName);
         for (var i = 0; i < productName.length; i++) {
             if (productName[i].type_id <= 2) {
                 displayFire += `<div class="displayFire col-sm-4">
                                     <p>${productName[i].name}</p>
+                                    <img src="${pics.results[0].picture.medium}"" />
                                 </div>`
             }
         }
@@ -130,15 +154,15 @@ function chooseLoad(){
 
 
     $('#demolition').click(function(){
-        displayDemo = ""
+        displayDemo = "";
         $('.container').empty();
-        displayProductName();
 
-        console.log(productName);
+        // console.log(productName);
         for (var i = 0; i < productName.length; i++) {
             if (productName[i].type_id >= 3) {
                 displayDemo += `<div class="displayFire col-sm-4">
                                     <p>${productName[i].name}</p>
+                                    <img src="${pics.results[0].picture.medium}"" />
                                 </div>`
             }
         }
